@@ -1,0 +1,279 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "forceNER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "next,when": {
+            "intent": "allowance.when",
+            "domain": "default"
+          },
+          "how,much": {
+            "intent": "allowance.how",
+            "domain": "default"
+          },
+          "how,month,much,per": {
+            "intent": "allowance.how",
+            "domain": "default"
+          },
+          "get,how,to": {
+            "intent": "allowance.get",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "allowance.when": "default",
+          "allowance.how": "default",
+          "allowance.get": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "When   next ",
+            "intent": "allowance.when"
+          },
+          {
+            "domain": "default",
+            "utterance": "How much   ",
+            "intent": "allowance.how"
+          },
+          {
+            "domain": "default",
+            "utterance": "How much    per month",
+            "intent": "allowance.how"
+          },
+          {
+            "domain": "default",
+            "utterance": "How to get  ",
+            "intent": "allowance.get"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "when": 1,
+              "next": 1,
+              "how": 1,
+              "much": 1,
+              "per": 1,
+              "month": 1,
+              "to": 1,
+              "get": 1
+            },
+            "intents": {
+              "allowance.when": 1,
+              "allowance.how": 1,
+              "allowance.get": 1
+            },
+            "intentFeatures": {
+              "allowance.when": {
+                "when": 1,
+                "next": 1
+              },
+              "allowance.how": {
+                "how": 1,
+                "much": 1,
+                "per": 1,
+                "month": 1
+              },
+              "allowance.get": {
+                "how": 1,
+                "to": 1,
+                "get": 1
+              }
+            },
+            "featuresToIntent": {
+              "when": [
+                "allowance.when"
+              ],
+              "next": [
+                "allowance.when"
+              ],
+              "how": [
+                "allowance.how",
+                "allowance.get"
+              ],
+              "much": [
+                "allowance.how"
+              ],
+              "per": [
+                "allowance.how"
+              ],
+              "month": [
+                "allowance.how"
+              ],
+              "to": [
+                "allowance.get"
+              ],
+              "get": [
+                "allowance.get"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "when",
+                "next",
+                "how",
+                "much",
+                "per",
+                "month",
+                "to",
+                "get"
+              ],
+              "intents": [
+                "allowance.when",
+                "allowance.how",
+                "allowance.get"
+              ],
+              "perceptrons": [
+                [
+                  5.992562294006348,
+                  5.992562294006348,
+                  -1.391461730003357,
+                  -0.9090575575828552,
+                  -0.22446346282958984,
+                  -0.22446346282958984,
+                  -0.4777032434940338,
+                  -0.4777032434940338,
+                  2.300550556210054
+                ],
+                [
+                  -0.8971628546714783,
+                  -0.8971628546714783,
+                  4.52737283706665,
+                  7.676875591278076,
+                  0.19071343541145325,
+                  0.19071343541145325,
+                  -3.1467037200927734,
+                  -3.1467037200927734,
+                  1.8126900799548376
+                ],
+                [
+                  -0.5089811682701111,
+                  -0.5089811682701111,
+                  2.317992925643921,
+                  -3.2122116088867188,
+                  -0.7694257497787476,
+                  -0.7694257497787476,
+                  5.5306010246276855,
+                  5.5306010246276855,
+                  0.9021465497278551
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "When   next "
+      ],
+      [
+        "en",
+        "How much   "
+      ],
+      [
+        "en",
+        "How much    per month"
+      ],
+      [
+        "en",
+        "How to get  "
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "allowance.when": [
+          {
+            "answer": "N/A"
+          }
+        ],
+        "allowance.how": [
+          {
+            "answer": "3500 per month"
+          }
+        ],
+        "allowance.get": [
+          {
+            "answer": "By visiting the near ATM Machine"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
